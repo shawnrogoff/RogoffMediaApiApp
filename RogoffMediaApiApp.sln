@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RogoffMediaApi", "RogoffMed
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RogoffMediaLibrary", "RogoffMediaLibrary\RogoffMediaLibrary.csproj", "{BB1B6567-AA74-49C5-8427-6B517107E646}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkLibrary", "EntityFrameworkLibrary\EntityFrameworkLibrary.csproj", "{BD2BBEE0-B853-4253-BD66-36178883A69F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BB1B6567-AA74-49C5-8427-6B517107E646}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB1B6567-AA74-49C5-8427-6B517107E646}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB1B6567-AA74-49C5-8427-6B517107E646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2BBEE0-B853-4253-BD66-36178883A69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2BBEE0-B853-4253-BD66-36178883A69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2BBEE0-B853-4253-BD66-36178883A69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2BBEE0-B853-4253-BD66-36178883A69F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

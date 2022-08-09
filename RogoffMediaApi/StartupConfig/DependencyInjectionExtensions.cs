@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using EntityFrameworkLibrary;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RogoffMediaApi.HealthChecks;
@@ -143,6 +144,14 @@ public static class DependencyInjectionExtensions
             options.GroupNameFormat = "'v'VVV";
             // For swagger it replaces the v{version:apiVersion} in api routes
             options.SubstituteApiVersionInUrl = true;
+        });
+    }
+
+    public static void AddDatabaseServices(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddDbContext<RMContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
         });
     }
 }

@@ -1,3 +1,4 @@
+global using Microsoft.EntityFrameworkCore;
 using HealthChecks.UI.Client;
 using RogoffMediaApi.StartupConfig;
 using WatchDog;
@@ -9,6 +10,7 @@ builder.AddAuthServices();
 builder.AddHealthCheckServices();
 builder.AddCustomServices();
 builder.AddApiVersioningServices();
+builder.AddDatabaseServices();
 
 var app = builder.Build();
 

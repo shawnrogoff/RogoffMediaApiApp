@@ -43,7 +43,7 @@ internal class PostConfiguration : IEntityTypeConfiguration<PostModel>
         
         builder.Property(x => x.DateTimeCreated)
             .HasColumnName("DateTimeCreated")
-            .HasColumnType("datetime")
+            .HasColumnType("datetime2(7)")
             .IsRequired();
         
         builder.Property(x => x.IsEdited)
@@ -57,7 +57,7 @@ internal class PostConfiguration : IEntityTypeConfiguration<PostModel>
 
         builder.Property(x => x.DateTimeEdited)
             .HasColumnName("DateTimeEdited")
-            .HasColumnType("datetime");
+            .HasColumnType("datetime2(7)");
 
         builder.Property(x => x.Likes)
             .HasColumnName("Likes")
@@ -75,7 +75,7 @@ internal class PostConfiguration : IEntityTypeConfiguration<PostModel>
 
         builder.Property(x => x.DateTimeLastStatusChange)
             .HasColumnName("DateTimeLastStatusChange")
-            .HasColumnType("datetime")
+            .HasColumnType("datetime2(7)")
             .IsRequired();
 
         builder.Property(x => x.ReasonForRemoval)

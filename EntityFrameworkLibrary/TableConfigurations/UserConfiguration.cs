@@ -40,7 +40,7 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
 
         builder.Property(x => x.DateTimeLastDisplayNameChange)
             .HasColumnName("DateTimeLastDisplayNameChange")
-            .HasColumnType("datetime");
+            .HasColumnType("datetime2(7)");
 
         builder.Property(x => x.Email)
             .HasColumnName("Email")
@@ -50,12 +50,12 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
 
         builder.Property(x => x.DateTimeLastEmailChange)
             .HasColumnName("DateTimeLastEmailChange")
-            .HasColumnType("datetime")
+            .HasColumnType("datetime2(7)")
             .IsRequired();
 
         builder.Property(x => x.DateTimeCreated)
             .HasColumnName("DateTimeCreated")
-            .HasColumnType("datetime")
+            .HasColumnType("datetime2(7)")
             .IsRequired();
 
         builder.Property(x => x.Status)
@@ -65,7 +65,7 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
 
         builder.Property(x => x.DateTimeLastStatusChange)
             .HasColumnName("DateTimeLastStatusChange")
-            .HasColumnType("datetime")
+            .HasColumnType("datetime2(7)")
             .IsRequired();
 
         builder.Property(x => x.ReasonForRemoval)

@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RogoffMediaLibrary.DataAccess;
+using RogoffMediaLibrary.Models;
+using System.Security.Claims;
 
 namespace RogoffMediaApi.Controllers;
 
@@ -7,35 +10,84 @@ namespace RogoffMediaApi.Controllers;
 [ApiVersion("1.0")]
 public class PostsController : ControllerBase
 {
-    // GET: api/v1/Posts
-    [HttpGet]
-    public IEnumerable<string> Get()
+    private readonly IPostData _data;
+    private readonly ILogger<PostsController> _logger;
+
+    public PostsController(IPostData data, ILogger<PostsController> logger)
     {
-        return new string[] { "value1", "value2" };
+        _data = data;
+        _logger = logger;
     }
+
+    private int GetUserId()
+    {
+        var userIdText = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        return int.Parse(userIdText);
+    }
+
+    // GET: api/v1/Posts
+    //[HttpGet]
+    //public IEnumerable<string> Get()
+    //{
+    //    return new string[] { "value1", "value2" };
+    //}
 
     // GET api/v1/Posts/5
-    [HttpGet("{id}")]
-    public string Get(int id)
+    [HttpGet("{userId}", Name = "GetPostsByUser")]
+    public async Task<ActionResult<List<PostModel>>> GetPostsByUser(int userId)
     {
-        return "value";
+        _logger.LogInformation("GET: /Posts/{userId}", userId);
+
+        try
+        {
+            var output = await _data.GetPostsByUser(userId);
+            return Ok(output);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "The GET call to the {ApiPath} failed. The ID was {TodoId}",
+                $" /Posts/{userId}",
+                userId);
+            return BadRequest();
+        }
     }
 
-    // POST api/v1/Posts
-    [HttpPost]
-    public void Post([FromBody] string value)
+
+    // POST api/Todos
+    [HttpPost(Name = "CreatePost")]
+    public async Task<ActionResult<PostModel>> CreatePost([FromBody] PostModel post)
     {
+        try
+        {
+            var output = await _data.CreatePost(GetUserId(), post);
+
+            return Ok(output);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "The POST call to create a post failed");
+            return BadRequest();
+        }
     }
+
+
+
+
+    // POST api/v1/Posts
+    //[HttpPost]
+    //public void Post([FromBody] string value)
+    //{
+    //}
 
     // PUT api/v1/Posts/5
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
-    {
-    }
+    //public void Put(int id, [FromBody] string value)
+    //{
+    //}
 
     // DELETE api/v1/Posts/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-    }
+    //[HttpDelete("{id}")]
+    //public void Delete(int id)
+    //{
+    //}
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RogoffMediaApi.Controllers;
 
@@ -15,10 +16,16 @@ public class UsersController : ControllerBase
     }
 
     // GET api/v1/Users/5
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public string Get(int id)
     {
-        return "value";
+        string fileName = "appsettings.json";
+        string path = Path.Combine(Environment.CurrentDirectory, @"RogoffMediaApiApp\RogoffMediaApi\", fileName);
+
+        string basePath = Path.Combine(Environment.CurrentDirectory, @"RogoffMediaApiApp\RogoffMediaApi\");
+
+        return basePath;
     }
 
     // POST api/v1/Users

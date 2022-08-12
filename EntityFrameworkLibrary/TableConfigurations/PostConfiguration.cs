@@ -64,7 +64,7 @@ internal class PostConfiguration : IEntityTypeConfiguration<PostModel>
             .HasColumnType("int")
             .IsRequired();
 
-        builder.Property(x => x.RepostListOfIds)
+        builder.Property(x => x.RepostsIdString)
             .HasColumnName("RepostListOfIds")
             .HasColumnType("varchar(max)");
 
@@ -87,15 +87,15 @@ internal class PostConfiguration : IEntityTypeConfiguration<PostModel>
             .HasMaxLength(256)
             .HasColumnType("varchar(256)");
 
-        builder.Property(x => x.Comments)
+        builder.Property(x => x.CommentsIdString)
            .HasColumnName("Comments")
            .HasColumnType("varchar(max)");
 
         // Posts created by a User with User.Id
-        builder.HasOne(p => p.User)
-            .WithMany(u => u.Posts)
-            .HasForeignKey(p => p.Id)
-            .HasConstraintName("ForeignKey_Post_User");
+        //builder.HasOne(p => p.User)
+        //    .WithMany(u => u.Posts)
+        //    .HasForeignKey(p => p.UserId)
+        //    .HasConstraintName("ForeignKey_Post_User");
     }
 
 

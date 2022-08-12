@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace EntityFrameworkLibrary
 {
-    public class RMContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        // To add migrations with our custom RMContext:
         // dotnet ef migrations add InitialCreate --context RMContext
 
-
-        public RMContext(DbContextOptions<RMContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+
         }
 
         public DbSet<UserModel> Users { get; set; }

@@ -38,8 +38,17 @@ public class UserModel
     public string? AboutContent { get; set; }
     public byte[]? ProfilePictureData { get; set; }
     public string? ProfilePictureFiletype { get; set; }
+    public string? FollowingIdString { get; set; }
+    public string? FollowersIdString { get; set; }
+    public string? PostsIdString { get; set; }
+    public string? CommentsIdString { get; set; }
+
+    [NotMapped]
     public List<int>? Following { get; set; }
+    [NotMapped]
     public List<int>? Followers { get; set; }
-    public ICollection<PostModel> Posts { get; set; }
-    public ICollection<CommentModel> Comments { get; set; }
+    [NotMapped]
+    public List<int>? Posts { get; set; }
+    [NotMapped]
+    public List<int>? Comments { get; set; }
 }

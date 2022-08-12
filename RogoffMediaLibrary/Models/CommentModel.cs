@@ -1,5 +1,6 @@
 ﻿using RogoffMediaLibrary.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RogoffMediaLibrary.Models;
 
@@ -11,8 +12,6 @@ public class CommentModel
     }
 
     public int Id { get; set; }
-    public int UserId { get; set; }
-    public int PostId { get; set; }
     [Required]
     [MinLength(1)]
     [MaxLength(512)]
@@ -26,9 +25,16 @@ public class CommentModel
     public DateTime? DateTimeLastStatusChange { get; set; }
     public BanReason? ReasonForRemoval { get; set; }
     public string? RemovalDetails { get; set; }
-    public ICollection<CommentModel> Replies { get; set; }
+    public string? RepliesIdString { get; set; }
 
+    [NotMapped]
+    public List<int>? Replies { get; set; }
+
+    [ForeignKey("PostModel")]
+    public int PostId { get; set; }
     public virtual PostModel Post { get; set; }
 
+    [ForeignKey("UserModel")]
+    public int UserId { get; set; }
     public virtual UserModel User { get; set; }
 }

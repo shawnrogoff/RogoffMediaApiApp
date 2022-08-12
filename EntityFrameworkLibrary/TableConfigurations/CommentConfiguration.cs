@@ -83,20 +83,20 @@ internal class CommentConfiguration : IEntityTypeConfiguration<CommentModel>
             .HasMaxLength(256)
             .HasColumnType("varchar(256)");
 
-        builder.Property(x => x.Replies)
+        builder.Property(x => x.RepliesIdString)
            .HasColumnName("Replies")
            .HasColumnType("varchar(max)");
 
         // Comments created by a User.Id
-        builder.HasOne(p => p.User)
-            .WithMany(u => u.Comments)
-            .HasForeignKey(p => p.Id)
-            .HasConstraintName("ForeignKey_Comment_User");
+        //builder.HasOne(p => p.User)
+        //    .WithMany(u => u.Comments)
+        //    .HasForeignKey(p => p.UserId)
+        //    .HasConstraintName("ForeignKey_Comment_User");
 
-        // Comments are attached to a specific Post.Id
-        builder.HasOne(p => p.Post)
-            .WithMany(u => u.Comments)
-            .HasForeignKey(p => p.Id)
-            .HasConstraintName("ForeignKey_Comment_Post");
+        //// Comments are attached to a specific Post.Id
+        //builder.HasOne(p => p.Post)
+        //    .WithMany(u => u.Comments)
+        //    .HasForeignKey(p => p.PostId)
+        //    .HasConstraintName("ForeignKey_Comment_Post");
     }
 }

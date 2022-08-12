@@ -99,19 +99,19 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
            .HasColumnName("ProfilePictureFiletype")
            .HasColumnType("varchar(16)");
 
-        builder.Property(x => x.Following)
+        builder.Property(x => x.FollowingIdString)
            .HasColumnName("Following")
            .HasColumnType("varchar(max)");
 
-        builder.Property(x => x.Followers)
+        builder.Property(x => x.FollowersIdString)
            .HasColumnName("Followers")
            .HasColumnType("varchar(max)");
 
-        builder.Property(x => x.Posts)
+        builder.Property(x => x.PostsIdString)
            .HasColumnName("Posts")
            .HasColumnType("varchar(max)");
 
-        builder.Property(x => x.Comments)
+        builder.Property(x => x.CommentsIdString)
            .HasColumnName("Comments")
            .HasColumnType("varchar(max)");
 

@@ -1,4 +1,5 @@
 global using Microsoft.EntityFrameworkCore;
+global using RogoffMediaApi.Data;
 using EntityFrameworkLibrary;
 using HealthChecks.UI.Client;
 using RogoffMediaApi.StartupConfig;
@@ -7,11 +8,11 @@ using WatchDog;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddStandardServices();
+builder.AddDatabaseServices();
 builder.AddAuthServices();
 builder.AddHealthCheckServices();
 builder.AddCustomServices();
 builder.AddApiVersioningServices();
-builder.AddDatabaseServices();
 
 
 var app = builder.Build();
@@ -29,6 +30,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllers();

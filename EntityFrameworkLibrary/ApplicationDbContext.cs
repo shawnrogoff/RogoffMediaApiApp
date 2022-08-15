@@ -12,7 +12,9 @@ namespace EntityFrameworkLibrary
 {
     public class ApplicationDbContext : DbContext
     {
-        // dotnet ef migrations add InitialCreate --context RMContext
+        // dotnet ef migrations add InitialCreate --context ApplicationDbContext
+
+        // dotnet ef database update --startup-project ../RogoffMediaApi/RogoffMediaApi.csproj --context ApplicationDbContext
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

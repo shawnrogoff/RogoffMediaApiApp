@@ -11,7 +11,7 @@ public class PostModel
     {
 
     }
-
+    [Key]
     [Required]
     public int Id { get; set; }
     public int OriginalAuthorId { get; set; }

@@ -19,9 +19,9 @@ public class PostData : IPostData
             "RogoffMedia");
     }
 
-    public async Task<PostModel?> CreatePost(int userId, PostModel post)
+    public async Task<PostModel?> CreatePost(int userId, string postContent)
     {
-        var originalContent = post.OriginalContent;
+        var originalContent = postContent;
         var dateTimeCreated = DateTime.UtcNow;
 
         var results = await _sql.LoadData<PostModel, dynamic>(

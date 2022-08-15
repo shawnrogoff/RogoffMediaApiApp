@@ -90,6 +90,7 @@ public static class DependencyInjectionExtensions
     {
         builder.Services.AddHealthChecks()
             .AddSqlServer(builder.Configuration.GetConnectionString("RogoffMedia"));
+
         builder.Services.AddHealthChecks()
             .AddCheck<RandomHealthCheck>("Site Health Check")
             .AddCheck<RandomHealthCheck>("Database Health Check");
@@ -149,12 +150,9 @@ public static class DependencyInjectionExtensions
 
     public static void AddDatabaseServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        builder.Services.AddDbContext<DataContext>(options =>
         {
-            var connection = builder.Configuration.GetConnectionString("RogoffMedia");
-            //options.UseSqlServer(builder.Configuration.GetConnectionString("RogoffMedia"));
-            //options.UseSqlServer(connection, b => b.MigrationsAssembly("EntityFrameworkLibrary"));
-            options.UseSqlServer(connection, b => b.MigrationsAssembly("RogoffMediaApi"));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("RogoffMedia"));
         });
     }
 }

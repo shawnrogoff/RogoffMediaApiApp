@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RogoffMediaApi.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class CreateInitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,8 +68,7 @@ namespace RogoffMediaApi.Migrations
                         name: "ForeignKey_Post_User",
                         column: x => x.OriginalAuthorId,
                         principalTable: "users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -99,14 +98,12 @@ namespace RogoffMediaApi.Migrations
                         name: "ForeignKey_Comment_Post",
                         column: x => x.PostId,
                         principalTable: "posts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "ForeignKey_Comment_User",
                         column: x => x.UserId,
                         principalTable: "users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

@@ -10,7 +10,8 @@ public class CommentModel
     {
 
     }
-
+    [Key]
+    [Required]
     public int Id { get; set; }
     [Required]
     [MinLength(1)]

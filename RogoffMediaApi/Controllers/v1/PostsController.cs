@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RogoffMediaLibrary.DataAccess;
 using RogoffMediaLibrary.Models;
 using System.Security.Claims;
@@ -25,12 +26,12 @@ public class PostsController : ControllerBase
         return int.Parse(userIdText);
     }
 
-    // GET: api/v1/Posts
-    //[HttpGet]
-    //public IEnumerable<string> Get()
-    //{
-    //    return new string[] { "value1", "value2" };
-    //}
+    //GET: api/v1/Posts
+   [HttpGet(Name = "GetPosts")]
+    public IEnumerable<string> Get()
+    {
+        return new string[] { "value1", "value2" };
+    }
 
     // GET api/v1/Posts/5
     [HttpGet("{userId}", Name = "GetPostsByUser")]
@@ -55,11 +56,11 @@ public class PostsController : ControllerBase
 
     // POST api/Todos
     [HttpPost(Name = "CreatePost")]
-    public async Task<ActionResult<PostModel>> CreatePost([FromBody] PostModel post)
+    public async Task<ActionResult<PostModel>> CreatePost([FromBody] string postContent)
     {
         try
         {
-            var output = await _data.CreatePost(GetUserId(), post);
+            var output = await _data.CreatePost(GetUserId(), postContent);
 
             return Ok(output);
         }

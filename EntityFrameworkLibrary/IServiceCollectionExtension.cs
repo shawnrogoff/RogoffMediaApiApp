@@ -22,8 +22,12 @@ public static class IServiceCollectionExtension
             .AddJsonFile(fileName)
             .Build();
 
+        //service.AddDbContext<ApplicationDbContext>(options =>
+        //    options.UseSqlServer(Configuration.GetConnectionString("RogoffMedia"),
+        //    b => b.MigrationsAssembly("RogoffMediaApi")));
+
         service.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("RogoffMedia"),
+            options.UseSqlServer("Data Source=(localdb)\\ProjectModels;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
             b => b.MigrationsAssembly("RogoffMediaApi")));
 
         return service;

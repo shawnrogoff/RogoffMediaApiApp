@@ -7,6 +7,10 @@ namespace EntityFrameworkLibrary;
 
 internal class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
+    public ApplicationDbContextFactory()
+    {
+    }
+
     //private readonly IConfiguration _configuration;
     //public ApplicationDbContextFactory(IConfiguration configuration)
     //{
@@ -25,10 +29,9 @@ internal class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applica
         //    .Build();
 
 
-        DbContextOptionsBuilder<ApplicationDbContext> builder = new ();
-        //builder.UseSqlServer(Configuration.GetConnectionString("RogoffMedia"));
-        builder.UseSqlServer("Data Source = LCANB - OGNRTZ4ME\\SQLEXPRESS; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False",
-            b => b.MigrationsAssembly("RogoffMediaApi"));
+        var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
+        //builder.UseSqlServer(_configuration.GetConnectionString("RogoffMedia"));
+        builder.UseSqlServer("Data Source=(localdb)\\ProjectModels;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         return new ApplicationDbContext(builder.Options);
     }

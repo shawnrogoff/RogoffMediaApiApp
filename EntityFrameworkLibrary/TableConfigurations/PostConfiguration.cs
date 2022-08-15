@@ -92,10 +92,10 @@ internal class PostConfiguration : IEntityTypeConfiguration<PostModel>
            .HasColumnType("varchar(max)");
 
         // Posts created by a User with User.Id
-        //builder.HasOne(p => p.User)
-        //    .WithMany(u => u.Posts)
-        //    .HasForeignKey(p => p.UserId)
-        //    .HasConstraintName("ForeignKey_Post_User");
+        builder.HasOne(p => p.User)
+            .WithMany(u => u.Posts)
+            .HasForeignKey(p => p.UserId)
+            .HasConstraintName("ForeignKey_Post_User");
     }
 
 

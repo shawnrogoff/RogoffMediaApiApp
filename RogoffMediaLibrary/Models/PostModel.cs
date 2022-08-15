@@ -32,9 +32,10 @@ public class PostModel
     public string? CommentsIdString { get; set; }
 
     [NotMapped]
-    public List<int> Reposts { get; set; }
+    public List<int> RepostIds { get; set; }
     [NotMapped]
-    public List<int> Comments { get; set; }
+    public List<int> CommentIds { get; set; }
+    public virtual ICollection<CommentModel> Comments { get; set; }
 
     [ForeignKey("UserModel")]
     public int UserId { get; set; }

@@ -44,11 +44,14 @@ public class UserModel
     public string? CommentsIdString { get; set; }
 
     [NotMapped]
-    public List<int>? Following { get; set; }
+    public List<int>? FollowingIds { get; set; }
     [NotMapped]
-    public List<int>? Followers { get; set; }
-    [NotMapped]
-    public List<int>? Posts { get; set; }
-    [NotMapped]
-    public List<int>? Comments { get; set; }
+    public List<int>? FollowerIds { get; set; }
+    //[NotMapped]
+    //public List<int>? Posts { get; set; }
+    //[NotMapped]
+    //public List<int>? Comments { get; set; }
+
+    public virtual ICollection<PostModel> Posts { get; set; }
+    public virtual ICollection<CommentModel> Comments { get; set; }
 }

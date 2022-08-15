@@ -10,7 +10,7 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
 
     public void Configure(EntityTypeBuilder<UserModel> builder)
     {
-        builder.ToTable(TableName);
+        builder.ToTable((TableName).ToLower());
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
@@ -114,7 +114,5 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
         builder.Property(x => x.CommentsIdString)
            .HasColumnName("Comments")
            .HasColumnType("varchar(max)");
-
-        
     }
 }

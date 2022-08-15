@@ -13,6 +13,7 @@ builder.AddCustomServices();
 builder.AddApiVersioningServices();
 builder.AddDatabaseServices();
 
+
 var app = builder.Build();
 
 app.UseWatchDogExceptionLogger();

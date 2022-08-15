@@ -13,7 +13,7 @@ public static class IServiceCollectionExtension
 {
     public static IServiceCollection ConfigureService(this IServiceCollection service, IConfiguration Configuration)
     {
-        // access the appsettings.json file in the RogoffMediaAPI:
+        //access the appsettings.json file in the RogoffMediaAPI:
         string fileName = "appsettings.json";
         string path = Path.Combine(Environment.CurrentDirectory, @"RogoffMediaApiApp\RogoffMediaApi\", fileName);
 
@@ -23,7 +23,8 @@ public static class IServiceCollectionExtension
             .Build();
 
         service.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("RogoffMedia")));
+            options.UseSqlServer(Configuration.GetConnectionString("RogoffMedia"),
+            b => b.MigrationsAssembly("RogoffMediaApi")));
 
         return service;
     }

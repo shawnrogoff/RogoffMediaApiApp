@@ -80,7 +80,7 @@ public class PostsController : ControllerBase
     //}
 
     // PUT api/v1/Posts/5
-    [HttpPut("{id}")]
+    //[HttpPut("{id}")]
     //public void Put(int id, [FromBody] string value)
     //{
     //}
